@@ -6,6 +6,16 @@ import pyqt_rest_client as client
 from tests.QtRequestsMock import QtRequestsMock
 
 
+# noinspection PyUnusedLocal
+def pytest_make_parametrize_id(config, val):
+    #  Pytest hook for represent the Cyrillic alphabet
+
+    if callable(val) and hasattr(val, "__name__"):
+        return repr(val.__name__)
+
+    return repr(val)
+
+
 @pytest.fixture
 def login_mock():
     client.login(

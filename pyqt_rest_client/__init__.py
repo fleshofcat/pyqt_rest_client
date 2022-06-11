@@ -36,7 +36,3 @@ request_notifier = _RequestNotifier()
 
 network_manager = QNetworkAccessManager()
 active_requests: List[QNetworkReply] = []
-
-
-def all_requests_are_finished() -> bool:
-    return len(active_requests) == 0

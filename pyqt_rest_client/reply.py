@@ -8,6 +8,7 @@ class ReplyGotError(Exception):
     pass
 
 
+# It is a more convenient wrapper around QNetworkReply
 class Reply:
     def __init__(self, reply: Union[QNetworkReply, ReplyGotError]):
         if type(reply) is QNetworkReply:
