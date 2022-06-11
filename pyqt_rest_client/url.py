@@ -1,6 +1,5 @@
 from urllib.parse import urljoin
-
-from .. import client
+import pyqt_rest_client as client
 
 
 def url(url_parts: list, args: dict = None) -> str:

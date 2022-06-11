@@ -101,6 +101,7 @@ class Request:
                 lambda: client.request_notifier.request_finished.emit(descr)
             )
 
+        self.to_patch(qt_reply)
         return await future
 
     async def get(self, descr: str) -> Any:
@@ -144,6 +145,11 @@ class Request:
         return await self._request_and_return_bare_reply(
             lambda r, _: client.network_manager.deleteResource(r), b"", descr
         )
+
+    # This method is used to implement something like `requests-mock`
+    # But for qt network based requests
+    def to_patch(self, qt_reply: QNetworkReply):
+        pass
 
 
 def endpoint(res_type, url_parts: list, args: dict = None):
