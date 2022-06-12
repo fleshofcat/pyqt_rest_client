@@ -43,7 +43,7 @@ async def test_requests(qtbot, qt_requests_mock, dbs_endpoint, operation):
 
 
 @pytest.mark.parametrize("operation", ["GET", "POST", "PUT", "DELETE"])
-async def test_awaitable_requests_that_return_reply(
+async def test_requests_that_return_bare_reply(
     qtbot, qt_requests_mock, dbs_endpoint, operation
 ):
     request_methods = {
@@ -129,6 +129,12 @@ def test_cast_reply_to_resource(mocker, res_type, data: bytes, expected):
     assert expected == cast_reply_to_resource(reply_mock, res_type)
 
 
-def test_value_error_at_creating_request_from_wrong_data():
-    with pytest.raises(ValueError):
-        Reply("Str isn't valid here. QNetworkReply, ReplyGotError only")  # type: ignore
+def test_to_patch():
+    # Method Request.to_patch() is used for the qt_requests_mock fixture
+    # to modify replies, for request mocking purpose
+
+    # By default, Request.to_patch() do nothing and returns None
+    request_object = endpoint(str, ["url_part"])
+    assert request_object.to_patch("QNetworkReply should be here") is None
+
+

@@ -1,5 +1,3 @@
-import json
-
 import pytest
 from PyQt5.QtCore import QUrl, QByteArray
 from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
