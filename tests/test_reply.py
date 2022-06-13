@@ -1,9 +1,9 @@
 import pytest
-from PyQt5.QtCore import QUrl, QByteArray
-from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
+from PyQt5.QtCore import QByteArray, QUrl
+from PyQt5.QtNetwork import QNetworkReply, QNetworkRequest
 
-from pyqt_rest_client.reply import Reply, ReplyGotError
 import pyqt_rest_client as client
+from pyqt_rest_client.reply import Reply, ReplyGotError
 
 
 def qt_reply() -> QNetworkReply:

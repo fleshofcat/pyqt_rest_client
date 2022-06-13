@@ -8,6 +8,7 @@ from PyQt5.QtCore import QTimer, QUrl
 from PyQt5.QtNetwork import QNetworkReply, QNetworkRequest
 
 import pyqt_rest_client as client
+
 from .reply import Reply, ReplyGotError
 from .url import url
 

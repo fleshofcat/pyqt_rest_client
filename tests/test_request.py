@@ -4,7 +4,7 @@ import pytest
 from pydantic import BaseModel
 from PyQt5.QtNetwork import QNetworkReply
 
-from pyqt_rest_client.reply import ReplyGotError, Reply
+from pyqt_rest_client.reply import Reply, ReplyGotError
 from pyqt_rest_client.request import (
     cast_body_to_bytes,
     cast_reply_to_resource,
@@ -136,5 +136,3 @@ def test_to_patch():
     # By default, Request.to_patch() do nothing and returns None
     request_object = endpoint(str, ["url_part"])
     assert request_object.to_patch("QNetworkReply should be here") is None
-
-
