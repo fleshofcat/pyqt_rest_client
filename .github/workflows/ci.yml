@@ -1,0 +1,53 @@
+name: PyQt Rest Client
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Poetry
+      uses: abatilo/actions-poetry@v2.1.0
+      with:
+        poetry-version: 1.1.7
+
+    - name: Load Cached Dependencies
+      id: cached-poetry-dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pypoetry/
+        key: ${{ runner.os }}-python${{ matrix.python-version }}-pyproject-${{ hashFiles('pyproject.toml') }}
+
+    - name: Install dependencies
+      run: poetry install
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+
+    # It is for github ci actions debugging. https://github.com/mxschmitt/action-tmate
+    # - name: Setup tmate session
+    #   uses: mxschmitt/action-tmate@v3
+
+    - name: Lint with flake8
+      run: poetry run flake8 --show-source --statistics .
+
+    - name: Check style with black
+      run: poetry run black .
+
+    - name: Test with pytest
+      run: poetry run pytest --cov-config=.coveragerc --cov=./ --cov-report term-missing tests/
