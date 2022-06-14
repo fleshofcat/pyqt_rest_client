@@ -32,7 +32,7 @@ jobs:
       id: cached-poetry-dependencies
       uses: actions/cache@v2
       with:
-        path: ~/.cache/pypoetry/virtualenvs/
+        path: ~/.cache/pypoetry/
         key: ${{ runner.os }}-python${{ matrix.python-version }}-pyproject-${{ hashFiles('pyproject.toml') }}
 
     - name: Install dependencies
@@ -53,4 +53,3 @@ jobs:
       run: poetry run pytest --cov-config=.coveragerc --cov=./ --cov-report term-missing tests/
       env:
         QT_QPA_PLATFORM: offscreen
-

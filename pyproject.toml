@@ -32,3 +32,4 @@ asyncio_mode = "auto"
 
 [tool.isort]
 profile = "black"
+
