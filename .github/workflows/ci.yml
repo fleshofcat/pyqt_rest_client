@@ -40,8 +40,8 @@ jobs:
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
     # It is for github ci actions debugging. https://github.com/mxschmitt/action-tmate
-    # - name: Setup tmate session
-    #   uses: mxschmitt/action-tmate@v3
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
 
     - name: Lint with flake8
       run: poetry run flake8 --show-source --statistics .
