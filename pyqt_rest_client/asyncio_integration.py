@@ -7,7 +7,7 @@ _release_exceptions_timers: List[QTimer] = []
 
 
 def async_task(func) -> Callable:
-    def a_sync_wrapper_around_async_func(*args, **kwargs):
+    def sync_wrapper_around_async_func(*args, **kwargs):
         task = asyncio.create_task(func(*args, **kwargs))
 
         release_exceptions_timer = QTimer()
@@ -24,4 +24,4 @@ def async_task(func) -> Callable:
         release_exceptions_timer.timeout.connect(check_task_exceptions_if_it_is_done)
         release_exceptions_timer.start(50)
 
-    return a_sync_wrapper_around_async_func
+    return sync_wrapper_around_async_func
