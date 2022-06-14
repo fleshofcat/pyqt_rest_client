@@ -32,7 +32,7 @@ jobs:
       id: cached-poetry-dependencies
       uses: actions/cache@v2
       with:
-        path: ~/.cache/pypoetry/
+        path: ~/.cache/pypoetry/virtualenvs/
         key: ${{ runner.os }}-python${{ matrix.python-version }}-pyproject-${{ hashFiles('pyproject.toml') }}
 
     - name: Install dependencies
