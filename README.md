@@ -4,9 +4,9 @@ This package was written to make work with the REST API server async and conveni
 
 Authentication here is calculated based on password/secret and message body.
 
-For stable work with qt event loop, this package uses under the hood native qt classes for networking: `QNetworkAccessManager`, `QNetworkRequest`, `QNetworkReply`.
+For stable work with Qt event loop, this package uses under the hood native Qt classes for networking: `QNetworkAccessManager`, `QNetworkRequest`, `QNetworkReply`.
 
-To use [async/await](https://iximiuz.com/en/posts/from-callback-hell-to-async-await-heaven/) pattern the client wraps qt requests into python [Future](https://docs.python.org/3/library/asyncio-future.html) objects.
+To use [async/await](https://iximiuz.com/en/posts/from-callback-hell-to-async-await-heaven/) pattern the client wraps Qt requests into asyncio [Future](https://docs.python.org/3/library/asyncio-future.html) objects.
 
 ## External dependencies
 
@@ -106,5 +106,3 @@ poetry run pytest tests/
 # To see coverage statistics
 poetry run pytest --cov-config=.coveragerc --cov=./ --cov-report term-missing tests/
 ```
-
-
