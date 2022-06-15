@@ -84,7 +84,56 @@ To use the library, you need to do several steps, let's look at them using the `
         return app.exec_()
     ```
 
-In result you will get a list of pets from petstore.swagger.io into your terminal
+As a result you will get a list of pets from petstore.swagger.io into your terminal
+
+### Response deserialization
+
+You can return deserialized data from requests with [pydantic](https://pydantic-docs.helpmanual.io/)
+
+``` python
+# usage_example/petstore_api.py
+from typing import List, Optional
+from pydantic import BaseModel
+from pyqt_rest_client.request import endpoint
+
+class Pet(BaseModel):
+    id: int
+    name: Optional[str]
+    status: Optional[str]
+    category: Optional[Dict]
+    photoUrls: Optional[List[str]]
+    tags: Optional[List[Dict]]
+
+def find_pet_by_status(status: str):
+    return endpoint(List[Pet], ["pet", "findByStatus"], {"status": status})
+```
+
+``` python
+# usage_example/main.py
+from usage_example import petstore_api
+from usage_example.dataclasses.pet import Pet
+
+async def ask_petstore_the_available_pets():
+    found_pets = await petstore_api.find_pet_by_status("available").get(
+        descr="Request available pets"
+    )
+
+    for pet in found_pets:
+        assert type(pet) is Pet
+        print(pet.id)
+        print(pet.status)
+
+
+    # Also you can use get_and_return_bare_reply() instead of get()
+    found_pets_reply = await petstore_api.find_pet_by_status(
+        "available"
+    ).get_and_return_bare_reply(descr="Request available pets")
+
+    for pet in found_pets_reply.json():
+        assert type(pet) is dict
+        print(pet["id"])
+        print(pet["status"])
+```
 
 
 ## [Dev notes](doc/dev_notes.md)
