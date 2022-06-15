@@ -59,7 +59,6 @@ To use the library, you need to do several steps, let's look at them using the `
     from usage_example import petstore_api
     from pyqt_rest_client import async_task
 
-
     @async_task
     async def ask_petstore_the_available_pets():
         found_pets = await petstore_api.find_pet_by_status("available").get(
@@ -68,14 +67,17 @@ To use the library, you need to do several steps, let's look at them using the `
         print(found_pets)
     ```
 
-1. Set base url and call the slot
+1. Set the base url and call the slot
 
     ``` python
     # usage_example/main.py
+    from pyqt_rest_client import async_task, login
+    from PyQt5.QtCore import QTimer
+
     def main():
         ...
 
-        # Username & secret will be used to calculate and set Authentication header
+        # Username & secret used to calculate and set a custom Authentication header
         # For servers that allow some endpoints to work without authentication,
         # such as the petstore.swagger.io, this will be enough
         login("https://petstore.swagger.io/v2/", username="", secret="")
