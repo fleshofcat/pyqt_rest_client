@@ -32,7 +32,7 @@ To use the library, you need to do several steps, let's look at them using the `
 
     ``` python
     # usage_example/petstore_api.py
-    from pyqt_rest_client.request import endpoint
+    from pyqt_rest_client import endpoint
 
     def find_pet_by_status(status: str):
         return endpoint(list, ["pet", "findByStatus"], {"status": status})
@@ -96,7 +96,7 @@ You can return deserialized data from requests with [pydantic](https://pydantic-
 # usage_example/petstore_api.py
 from typing import List, Optional
 from pydantic import BaseModel
-from pyqt_rest_client.request import endpoint
+from pyqt_rest_client import endpoint
 
 class Pet(BaseModel):
     id: int

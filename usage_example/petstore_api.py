@@ -1,6 +1,6 @@
 from typing import List
 
-from pyqt_rest_client.request import endpoint
+from pyqt_rest_client import endpoint
 from usage_example.dataclasses.pet import Pet
 
 

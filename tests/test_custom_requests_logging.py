@@ -1,5 +1,5 @@
 import pyqt_rest_client as client
-from pyqt_rest_client.request import endpoint
+from pyqt_rest_client import endpoint
 
 
 def some_endpoint():
