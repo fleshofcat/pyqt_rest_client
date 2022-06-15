@@ -4,6 +4,8 @@ from typing import List
 from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkReply
 
+from pyqt_rest_client.asyncio_integration import async_task  # noqa
+
 
 class Login:
     base_url: str
