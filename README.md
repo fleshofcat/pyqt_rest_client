@@ -135,5 +135,30 @@ async def ask_petstore_the_available_pets():
         print(pet["status"])
 ```
 
+### `async_task` decorator
+
+This function is a wrapper over async function to call it from the sync code. First of all, it is needed to connect a qt signal, which is synchronous, to an asynchronous Qt slot
+
+``` python
+from pyqt_rest_client import async_task
+from usage_example import petstore_api
+from PyQt5.QtCore import QTimer
+
+@async_task
+async def async_slot():
+    await petstore_api.find_pet_by_status("").get("")
+
+async def another_async_slot():
+    await petstore_api.find_pet_by_status("").get("")
+
+
+def sync_code():
+    async_slot()
+    # Or connect to it
+    QTimer.singleShot(0, async_slot)
+
+    # Also you can use `async_task` directly
+    QTimer.singleShot(0, async_task(another_async_slot))
+```
 
 ## [Dev notes](doc/dev_notes.md)
