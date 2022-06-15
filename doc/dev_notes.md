@@ -1,11 +1,13 @@
-# Install the development environment
+# Dev notes
+
+## Install the development environment
 
 ``` bash
 git clone git@github.com:fleshofcat/pyqt_rest_client.git
 cd pyqt_rest_client
 poetry install
 
-# It is automated code checkers (black, flake8...)
+# It is automated code checkers setup (black, flake8...)
 poetry run pre-commit install -t=pre-commit -t=pre-push
 ```
 

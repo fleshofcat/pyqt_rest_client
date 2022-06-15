@@ -86,6 +86,5 @@ To use the library, you need to do several steps, let's look at them using the `
 
 In result you will get a list of pets from petstore.swagger.io into your terminal
 
-## Install the development environment
 
-## [For development](doc/for_development.md)
+## [Dev notes](doc/dev_notes.md)
