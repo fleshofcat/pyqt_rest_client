@@ -5,7 +5,7 @@ import qasync
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, qApp
 
-from pyqt_rest_client import async_task, login_data
+from pyqt_rest_client import async_task, login
 from usage_example import petstore_api
 
 
@@ -22,8 +22,10 @@ def main():
     app = QApplication(sys.argv)
     asyncio.set_event_loop(qasync.QEventLoop(app))
 
-    # FIXME It is a crutch to avoid login() that requires login & secret
-    login_data.base_url = "https://petstore.swagger.io/v2/"
+    # Username & secret will be used to calculate and set Authentication header
+    # For servers that allow some endpoints to work without authentication,
+    # such as the petstore.swagger.io, this will be enough
+    login("https://petstore.swagger.io/v2/", username="", secret="")
 
     QTimer.singleShot(0, ask_petstore_the_available_pets_and_exit)
     return app.exec_()
