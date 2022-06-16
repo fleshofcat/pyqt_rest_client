@@ -2,7 +2,7 @@
 
 This package was written to make work with the REST API server async and convenient for PyQt applications.
 
-Authentication here is calculated based on password/secret and message body.
+Authentication here is calculated based on password, secret and message body.
 
 For stable work with Qt event loop, this package uses under the hood native Qt classes for networking: `QNetworkAccessManager`, `QNetworkRequest`, `QNetworkReply`.
 
@@ -14,7 +14,7 @@ To use [async/await](https://iximiuz.com/en/posts/from-callback-hell-to-async-aw
 1. python 3.8 or later
 1. poetry package manager
 
-[Recommended way to install poetry](https://python-poetry.org/docs/#installation) and the quick one: `pip install poetry --user`
+[Recommended way to install poetry](https://python-poetry.org/docs/#installation) and the quick one: `pip install poetry --user`.
 
 ## Install
 
@@ -26,7 +26,7 @@ poetry add git+ssh://git@github.com:fleshofcat/pyqt_rest_client.git
 
 ## Usage
 
-To use the library, you need to do several steps, let's look at them using the `usage_example` in the root of the repository
+To use the library, you need to do several steps, let's look at them using the `usage_example` in the root of the repository.
 
 1. Create your API methods set
 
@@ -86,11 +86,11 @@ To use the library, you need to do several steps, let's look at them using the `
         return app.exec_()
     ```
 
-As a result you will get a list of pets from petstore.swagger.io into your terminal
+As a result you will get a list of pets from petstore.swagger.io into your terminal.
 
 ### Response deserialization
 
-You can return deserialized data from requests with [pydantic](https://pydantic-docs.helpmanual.io/)
+You can deserialize the data from requests with [pydantic](https://pydantic-docs.helpmanual.io/).
 
 ``` python
 # usage_example/petstore_api.py
@@ -139,7 +139,7 @@ async def ask_petstore_the_available_pets():
 
 ### `async_task` decorator
 
-This function is a wrapper over async function to call it from the sync code. First of all, it is needed to connect a qt signal, which is synchronous, to an asynchronous Qt slot
+This function is a wrapper over async function to call it from the sync code. First of all, it is needed to connect a qt signal, which is synchronous, to an asynchronous Qt slot.
 
 ``` python
 from pyqt_rest_client import async_task
