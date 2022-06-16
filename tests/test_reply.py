@@ -60,7 +60,7 @@ def test_methods_that_depends_on_qt_reply(mocker):
     assert reply.url() == "http://some:1234"
 
     mocker.patch.object(mocked_qt_reply, "attribute", return_value=200)
-    assert reply.code() == 200
+    assert reply.http_code() == 200
 
     mocker.patch.object(mocked_qt_reply, "errorString", return_value="Some error")
     assert reply.qt_error_string() == "Some error"
