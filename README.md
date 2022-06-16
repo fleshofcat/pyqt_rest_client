@@ -8,6 +8,10 @@ For stable work with Qt event loop, this package uses under the hood native Qt c
 
 To use [async/await](https://iximiuz.com/en/posts/from-callback-hell-to-async-await-heaven/) pattern the client wraps Qt requests into asyncio [Future](https://docs.python.org/3/library/asyncio-future.html) objects.
 
+## The reason of creation this library
+
+You might think that it would be easier to generate a client with something like [swagger-codegen](https://swagger.io/tools/swagger-codegen/) and this is true, but the server for which this client was written used a hash based on the username, the user secret and the message from the request for authentication, which could not be achieved with the code generator, so this client exists.
+
 ## External dependencies
 
 1. git
