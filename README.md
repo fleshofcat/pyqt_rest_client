@@ -12,7 +12,7 @@ To use [async/await](https://iximiuz.com/en/posts/from-callback-hell-to-async-aw
 
 1. git
 1. python 3.8 or later
-1. poetry package manager
+1. [poetry](https://python-poetry.org/) package manager
 
 [Recommended way to install poetry](https://python-poetry.org/docs/#installation) and the quick one: `pip install poetry --user`.
 
@@ -113,7 +113,6 @@ def find_pet_by_status(status: str):
 ``` python
 # usage_example/main.py
 from usage_example import petstore_api
-from usage_example.dataclasses.pet import Pet
 
 async def ask_petstore_the_available_pets():
     found_pets = await petstore_api.find_pet_by_status("available").get(
@@ -121,7 +120,7 @@ async def ask_petstore_the_available_pets():
     )
 
     for pet in found_pets:
-        assert type(pet) is Pet
+        assert type(pet) is petstore_api.Pet
         print(pet.id)
         print(pet.status)
 
