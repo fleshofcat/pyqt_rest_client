@@ -83,7 +83,7 @@ To use the library, you need to do several steps, let's look at them using the `
 
         # Username & secret used to calculate and set a custom Authentication header
         # For servers that allow some endpoints to work without authentication,
-        # such as the petstore.swagger.io, this will be enough
+        # such as the https://petstore.swagger.io/, this will be enough
         login("https://petstore.swagger.io/v2/", username="", secret="")
 
         QTimer.singleShot(0, ask_petstore_the_available_pets)
