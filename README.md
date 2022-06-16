@@ -163,4 +163,28 @@ def sync_code():
     QTimer.singleShot(0, async_task(another_async_slot))
 ```
 
+### Error handling
+
+To handle request errors there is a `ReplyGotError` exception.
+
+``` python
+# usage_example/main.py
+from usage_example import petstore_api
+from pyqt_rest_client.reply import ReplyGotError, Reply
+
+async def ask_petstore_the_available_pets():
+    try:
+        found_pets = await petstore_api.find_pet_by_status("available").get(
+            descr="Request available pets"
+        )
+        print(found_pets)
+
+    except ReplyGotError as e:
+        reply = Reply(e)
+        print(
+            f"The request failed with {reply.http_code()=} "
+            f"and {reply.qt_error_string()=}"
+        )
+```
+
 ## [Dev notes](doc/dev_notes.md)

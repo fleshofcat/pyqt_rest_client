@@ -52,7 +52,7 @@ class Reply:
     def ok(self) -> bool:
         return self.reply.error() == QNetworkReply.NoError
 
-    def code(self) -> int:
+    def http_code(self) -> int:
         return self.reply.attribute(QNetworkRequest.HttpStatusCodeAttribute)
 
     def qt_error_string(self) -> str:
