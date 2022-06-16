@@ -186,4 +186,25 @@ async def ask_petstore_the_available_pets():
         )
 ```
 
+### The request description
+
+It is used to watch the active requests with `pyqt_rest_client.request_notifier` signals.
+
+``` python
+await petstore_api.find_pet_by_status("").get(
+    descr="This is the description"
+)
+
+request_notifier.request_started.connect(
+    lambda descr: print(f"request started: {descr=}")
+)
+request_notifier.request_finished.connect(
+    lambda descr: print(f"request finished: {descr=}")
+)
+
+# out:
+# >> request started: descr='This is the description'
+# >> request finished: descr='This is the description'
+```
+
 ## [Dev notes](doc/dev_notes.md)
