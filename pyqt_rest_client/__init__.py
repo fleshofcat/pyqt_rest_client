@@ -4,8 +4,9 @@ from typing import List
 from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkReply
 
-from pyqt_rest_client.asyncio_integration import async_task  # noqa
-from pyqt_rest_client.request import endpoint  # noqa
+# This is here so users can import these objects from pyqt_rest_client directly
+from pyqt_rest_client.asyncio_integration import async_task  # noqa: F401
+from pyqt_rest_client.request import endpoint  # noqa: F401
 
 
 class Login:
