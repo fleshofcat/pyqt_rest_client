@@ -1,5 +1,6 @@
 # PyQt Rest Client
 
+[![PyQt Rest Client](https://github.com/fleshofcat/pyqt_rest_client/actions/workflows/ci.yml/badge.svg)](https://github.com/fleshofcat/pyqt_rest_client/actions/workflows/ci.yml)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 This package was written to make work with the REST API server async and convenient for PyQt applications.
