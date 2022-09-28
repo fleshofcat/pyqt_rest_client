@@ -1,4 +1,4 @@
-name: PyQt Rest Client
+name: CI
 
 on:
   push:
